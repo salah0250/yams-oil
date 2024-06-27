@@ -60,7 +60,7 @@ def is_large_straight(dice):
     return any(straight.issubset(unique_dice) for straight in straights)
 
 # Définir vos routes Flask ici
-@app.route('/.netlify/functions/api/roll_dice', methods=['POST'])
+@app.route('/api/roll_dice', methods=['POST'])
 def api_roll_dice():
     data = request.json
     current_dice = data['current_dice']
@@ -68,7 +68,7 @@ def api_roll_dice():
     new_dice = roll_dice(current_dice, keep)
     return jsonify(new_dice)
 
-@app.route('/.netlify/functions/api/calculate_score', methods=['POST'])
+@app.route('/api/calculate_score', methods=['POST'])
 def api_calculate_score():
     data = request.json
     dice = data['dice']
@@ -76,7 +76,7 @@ def api_calculate_score():
     score = calculate_score(dice, category_index)
     return jsonify({'score': score})
 
-@app.route('/.netlify/functions/api/ai_turn', methods=['POST'])
+@app.route('/api/ai_turn', methods=['POST'])
 def api_ai_turn():
     data = request.json
     used_categories = data['used_categories']
