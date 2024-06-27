@@ -68,7 +68,7 @@ def api_roll_dice():
     new_dice = roll_dice(current_dice, keep)
     return jsonify(new_dice)
 
-@app.route('/api/calculate_score', methods=['POST'])
+@app.route('/calculate_score', methods=['POST'])
 def api_calculate_score():
     data = request.json
     dice = data['dice']
